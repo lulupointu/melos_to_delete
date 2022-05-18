@@ -118,10 +118,10 @@ class MelosWorkspace {
   /// If no [sdkPath] is specified, this will return the name of the tool as is
   /// so that it can be used as an executable from PATH.
   String sdkTool(String tool) {
-    final sdkPath = this.sdkPath;
-    if (sdkPath != null) {
-      return p.join(sdkPath, 'bin', tool);
-    }
+    // final sdkPath = this.sdkPath;
+    // if (sdkPath != null) {
+    //   return p.join(sdkPath, 'bin', tool);
+    // }
     return tool;
   }
 
