@@ -56,6 +56,7 @@ class MelosWorkspace {
     canRunPubGetConcurrently = utils.canRunPubGetConcurrently(sdkTool('dart'));
     isPubspecOverridesSupported =
         utils.isPubspecOverridesSupported(sdkTool('dart'));
+    print('isSubCommand: ${utils.isPubSubcommand(workspace: this)}');
     print('MelosWorkspace.constructor.end');
   }
 
