@@ -143,7 +143,8 @@ mixin _PublishMixin on _ExecMixin {
       'Publishing ${unpublishedPackages.length} packages to registry:',
     );
     final execArgs = [
-      ...pubCommandExecArgs(useFlutter: false, workspace: workspace),
+      if (isPubSubcommand()) 'dart',
+      'pub',
       'publish',
     ];
 
