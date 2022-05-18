@@ -401,10 +401,9 @@ Future<int> startProcess(
   return exitCode;
 }
 
-bool isPubSubcommand({required MelosWorkspace workspace}) {
+bool isPubSubcommand() {
   try {
-    return Process.runSync(workspace.sdkTool('pub'), ['--version']).exitCode !=
-        0;
+    return Process.runSync('pub', ['--version']).exitCode != 0;
   } on ProcessException {
     return true;
   }
@@ -444,7 +443,7 @@ List<String> pubCommandExecArgs({
   return [
     if (useFlutter)
       'flutter'
-    else if (isPubSubcommand(workspace: workspace))
+    else if (isPubSubcommand())
       'dart',
     'pub',
   ];

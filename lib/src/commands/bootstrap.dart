@@ -187,13 +187,18 @@ mixin _BootstrapMixin on _CleanMixin {
     Package package, {
     bool inTemporaryProject = false,
   }) async {
-    final execArgs = [
-      ...pubCommandExecArgs(
-        useFlutter: package.isFlutterPackage,
-        workspace: workspace,
-      ),
-      'get',
-    ];
+    // final execArgs = [
+    //   ...pubCommandExecArgs(
+    //     useFlutter: package.isFlutterPackage,
+    //     workspace: workspace,
+    //   ),
+    //   'get',
+    // ];
+
+    final pubGetArgs = ['pub', 'get'];
+    final execArgs = package.isFlutterPackage
+        ? ['flutter', ...pubGetArgs]
+        : [if (utils.isPubSubcommand()) 'dart', ...pubGetArgs];
 
     final executable = currentPlatform.isWindows ? 'cmd' : '/bin/sh';
     final packagePath = inTemporaryProject
