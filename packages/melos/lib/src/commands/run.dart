@@ -86,9 +86,9 @@ mixin _RunMixin on _Melos {
 
     final environment = {
       'MELOS_ROOT_PATH': config.path,
-      if (workspace.sdkPath != null) envKeyMelosSdkPath: workspace.sdkPath!,
-      if (workspace.childProcessPath != null)
-        'PATH': workspace.childProcessPath!,
+      // if (workspace.sdkPath != null) envKeyMelosSdkPath: workspace.sdkPath!,
+      // if (workspace.childProcessPath != null)
+      //   'PATH': workspace.childProcessPath!,
       ...script.env,
     };
 
