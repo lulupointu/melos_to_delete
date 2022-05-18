@@ -285,6 +285,7 @@ String? resolveSdkPath({
   required String? commandSdkPath,
   required String workspacePath,
 }) {
+  return null;
   var sdkPath = commandSdkPath ?? envSdkPath ?? configSdkPath;
   if (sdkPath == null || sdkPath.isEmpty || sdkPath == utils.autoSdkPathOptionValue) {
     return null;
