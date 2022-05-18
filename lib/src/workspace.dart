@@ -52,9 +52,11 @@ class MelosWorkspace {
     required this.sdkPath,
     this.logger,
   }) {
+    print('MelosWorkspace.constructor');
     canRunPubGetConcurrently = utils.canRunPubGetConcurrently(sdkTool('dart'));
     isPubspecOverridesSupported =
         utils.isPubspecOverridesSupported(sdkTool('dart'));
+    print('MelosWorkspace.constructor.end');
   }
 
   /// Build a [MelosWorkspace] from a workspace configuration.
