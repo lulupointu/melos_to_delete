@@ -126,10 +126,10 @@ class MelosWorkspace {
   }
 
   late final bool canRunPubGetConcurrently =
-      utils.canRunPubGetConcurrently(sdkTool('dart'));
+      utils.canRunPubGetConcurrently(this, sdkTool('dart'));
 
   late final bool isPubspecOverridesSupported =
-      utils.isPubspecOverridesSupported(sdkTool('dart'));
+      utils.isPubspecOverridesSupported(this, sdkTool('dart'));
 
   /// Returns a string path to the 'melos_tool' directory in this workspace.
   /// This directory should be git ignored and is used by Melos for temporary tasks

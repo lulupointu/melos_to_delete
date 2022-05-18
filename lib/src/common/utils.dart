@@ -114,12 +114,14 @@ int get terminalWidth {
 // https://regex101.com/r/XlfVPy/1
 final _dartSdkVersionRegexp = RegExp(r'^Dart SDK version: (\S+)');
 
-Version currentDartVersion(String dartTool) {
+Version currentDartVersion(String dartTool, MelosWorkspace workspace) {
   final result = Process.runSync(
     dartTool,
     ['--version'],
     stdoutEncoding: utf8,
     stderrEncoding: utf8,
+    runInShell: true,
+    workingDirectory: workspace.melosToolPath,
   );
   print('(/////////////// TEST ///////////////) DART --VERSION OUTPUT: exitCode: ${result.exitCode}, stderr: ${result.stderr}, stdout: ${result.stdout}');
 
@@ -145,16 +147,16 @@ Version currentDartVersion(String dartTool) {
   return Version.parse(versionString);
 }
 
-String nextDartMajorVersion([String dartTool = 'dart']) {
-  return currentDartVersion(dartTool).nextMajor.toString();
+String nextDartMajorVersion(MelosWorkspace workspace, [String dartTool = 'dart']) {
+  return currentDartVersion(dartTool, workspace).nextMajor.toString();
 }
 
-bool isPubspecOverridesSupported([String dartTool = 'dart']) =>
-    currentDartVersion(dartTool).compareTo(Version.parse('2.17.0-266.0.dev')) >=
+bool isPubspecOverridesSupported(MelosWorkspace workspace, [String dartTool = 'dart']) =>
+    currentDartVersion(dartTool, workspace).compareTo(Version.parse('2.17.0-266.0.dev')) >=
     0;
 
-bool canRunPubGetConcurrently([String dartTool = 'dart']) =>
-    currentDartVersion(dartTool).compareTo(Version.parse('2.16.0')) >= 0;
+bool canRunPubGetConcurrently(MelosWorkspace workspace, [String dartTool = 'dart']) =>
+    currentDartVersion(dartTool, workspace).compareTo(Version.parse('2.16.0')) >= 0;
 
 String promptInput(String message, {String? defaultsTo}) {
   return prompts.get(message, defaultsTo: defaultsTo);
