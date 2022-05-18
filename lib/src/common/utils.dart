@@ -121,6 +121,7 @@ Version currentDartVersion(String dartTool) {
     stdoutEncoding: utf8,
     stderrEncoding: utf8,
   );
+  print('(/////////////// TEST ///////////////) DART --VERSION OUTPUT: exitCode: ${result.exitCode}, stderr: ${result.stderr}, stdout: ${result.stdout}');
 
   if (result.exitCode != 0) {
     throw Exception(
