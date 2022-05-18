@@ -443,9 +443,9 @@ List<String> pubCommandExecArgs({
 }) {
   return [
     if (useFlutter)
-      workspace.sdkTool('flutter')
+      'flutter'
     else if (isPubSubcommand(workspace: workspace))
-      workspace.sdkTool('dart'),
+      'dart',
     'pub',
   ];
 }
