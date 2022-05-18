@@ -286,13 +286,13 @@ String? resolveSdkPath({
   required String workspacePath,
 }) {
   var sdkPath = commandSdkPath ?? envSdkPath ?? configSdkPath;
-  if (sdkPath == utils.autoSdkPathOptionValue) {
+  if (sdkPath == null || sdkPath.isEmpty || sdkPath == utils.autoSdkPathOptionValue) {
     return null;
   }
 
   /// If the sdk path is a relative one, prepend the workspace path
   /// to make it a valid full absolute path now.
-  if (sdkPath != null && p.isRelative(sdkPath)) {
+  if (p.isRelative(sdkPath)) {
     sdkPath = p.join(workspacePath, sdkPath);
   }
 
