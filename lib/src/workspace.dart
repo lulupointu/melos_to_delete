@@ -140,15 +140,7 @@ class MelosWorkspace {
   ///
   /// Is `null` if the PATH for child processes is the same as the PATH for the
   /// current process.
-  late final String? childProcessPath = sdkPath == null
-      ? null
-      : utils.addToPathEnvVar(
-          directory: p.join(sdkPath!, 'bin'),
-          currentPath: currentPlatform.environment['PATH']!,
-          // We prepend the path to the bin directory in the Dart/Flutter SDK
-          // because we want to shadow any system wide SDK.
-          prepend: true,
-        );
+  late final String? childProcessPath = null;
 
   /// Validates this workspace against the environment.
   ///
