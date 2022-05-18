@@ -115,7 +115,31 @@ int get terminalWidth {
 final _dartSdkVersionRegexp = RegExp(r'^Dart SDK version: (\S+)');
 
 Version currentDartVersion(String dartTool) {
-  return Version.parse(currentPlatform.version.split(' ')[0]);
+  final result = Process.runSync(
+    dartTool,
+    ['--version'],
+    stdoutEncoding: utf8,
+    stderrEncoding: utf8,
+  );
+
+  if (result.exitCode != 0) {
+    throw Exception(
+      'Failed to get current Dart version:\n${result.stdout}\n${result.stderr}',
+    );
+  }
+
+  // Older Dart SDK versions output to stderr instead of stdout.
+  final stdout = result.stdout as String;
+  final stderr = result.stderr as String;
+  final versionOutput = stdout.trim().isEmpty ? stderr : stdout;
+
+  final versionString =
+      _dartSdkVersionRegexp.matchAsPrefix(versionOutput)?.group(1);
+  if (versionString == null) {
+    throw Exception('Unable to parse Dart version from:\n$versionOutput');
+  }
+
+  return Version.parse(versionString);
 }
 
 String nextDartMajorVersion([String dartTool = 'dart']) {
