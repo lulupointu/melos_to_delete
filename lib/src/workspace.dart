@@ -177,8 +177,8 @@ class MelosWorkspace {
   Future<int> exec(List<String> execArgs, {bool onlyOutputOnError = false}) {
     final environment = {
       'MELOS_ROOT_PATH': path,
-      if (sdkPath != null) utils.envKeyMelosSdkPath: sdkPath!,
-      if (childProcessPath != null) 'PATH': childProcessPath!,
+      // if (sdkPath != null) utils.envKeyMelosSdkPath: sdkPath!,
+      // if (childProcessPath != null) 'PATH': childProcessPath!,
     };
 
     return utils.startProcess(
@@ -197,8 +197,8 @@ class MelosWorkspace {
   }) {
     final environment = {
       'MELOS_ROOT_PATH': path,
-      if (sdkPath != null) utils.envKeyMelosSdkPath: sdkPath!,
-      if (childProcessPath != null) 'PATH': childProcessPath!,
+      // if (sdkPath != null) utils.envKeyMelosSdkPath: sdkPath!,
+      // if (childProcessPath != null) 'PATH': childProcessPath!,
     };
 
     return utils.startProcess(

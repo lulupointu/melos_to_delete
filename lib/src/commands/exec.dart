@@ -35,7 +35,7 @@ mixin _ExecMixin on _Melos {
       'MELOS_PACKAGE_VERSION': (package.version).toString(),
       'MELOS_PACKAGE_PATH': package.path,
       'MELOS_ROOT_PATH': workspace.path,
-      if (workspace.sdkPath != null) envKeyMelosSdkPath: workspace.sdkPath!,
+      // if (workspace.sdkPath != null) envKeyMelosSdkPath: workspace.sdkPath!,
       if (workspace.childProcessPath != null)
         'PATH': workspace.childProcessPath!,
     };
