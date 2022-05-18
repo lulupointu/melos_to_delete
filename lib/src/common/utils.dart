@@ -139,6 +139,8 @@ Version currentDartVersion(String dartTool) {
     throw Exception('Unable to parse Dart version from:\n$versionOutput');
   }
 
+  print('(/////////////// TEST ///////////////) GOT DART VERSION: $versionString');
+
   return Version.parse(versionString);
 }
 
